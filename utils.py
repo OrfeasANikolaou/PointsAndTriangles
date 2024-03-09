@@ -1,6 +1,7 @@
 import random
 import math
 
+
 # generates a point in a cartesian map as a tuple, with only integer values
 def rnd_point(start: int = -100, end: int = 100):
     return (random.randint(start, end), random.randint(start, end))
@@ -40,30 +41,22 @@ def median_from_list(lst: list, sorted: bool = False):
         return lst[sz // 2]
     return (lst[sz // 2] + lst[(sz // 2) + 1]) / 2
 
-# returns range of values in list
+
+# returns range between min and max values in a list
 def get_list_val_range(lst: list, sorted: bool = False):
     if not sorted:
         lst.sort()
     return lst[len(lst) - 1] - lst[0]
 
+
 # returns standard deviation, flag true for raw output, false for choosing decimals
-# dec = x for number of decimal places desired, does not affect if bool = False
+# dec = x for number of decimal places desired, does not affect if flag = False
 def get_standard_deviation(lst: list, flag: bool = False, dec: int = 2):
     mean = avg_from_list(lst)
-    summation = 0;
+    summation = 0
     for obj in lst:
         summation += (obj - mean) ** 2
     raw = math.sqrt(summation / (len(lst) - 1))
     if flag:
         return raw
-    return float(str(raw)[0:dec+2])
-
-#  points = []
-#  for i in range(500):
-#      points.append(rnd_point())
-#      print(f'{points[i]}: {points[i][0]}, {points[i][1]}')
-
-#  for i in range(4):
-#      for j in range(i+1, 4):
-#          for k in range(j+1, 4):
-#              print(f'{i}, {j}, {k}')
+    return float(str(raw)[0 : dec + 2])
