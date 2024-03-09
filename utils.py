@@ -58,10 +58,12 @@ def get_list_val_range(lst: list, sorted: bool = False):
 def standard_deviation_from_list(lst: list):
     if len(lst) == 0:
         return None
+    # https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/variance-standard-deviation-population/a/calculating-standard-deviation-step-by-step
     mean = avg_from_list(lst)
     summation = 0
     for obj in lst:
         summation += (obj - mean) ** 2
+    # return round(math.sqrt(summation / (len(lst) - 1)), 2)
     return round(math.sqrt(summation / (len(lst))), 2)
 
 # returns list of valid areas of triangles that can be made by a list of points
