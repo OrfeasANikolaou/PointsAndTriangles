@@ -16,8 +16,12 @@ def calc_distance(p1: tuple[int, int], p2: tuple[int, int]):
 # user must check if returned value is non-valid
 def area_triangle(side_1: float, side_2: float, side_3: float):
     semiperimeter = (side_1 + side_2 + side_3) / 2
-    tmp = (semiperimeter * (semiperimeter - side_1) *  
-           (semiperimeter - side_2) * (semiperimeter - side_3))
+    tmp = (
+        semiperimeter
+        * (semiperimeter - side_1)
+        * (semiperimeter - side_2)
+        * (semiperimeter - side_3)
+    )
     if tmp > 0.000001:
         return math.sqrt(tmp)
     return 0
@@ -66,13 +70,14 @@ def standard_deviation_from_list(lst: list):
     # return round(math.sqrt(summation / (len(lst) - 1)), 2)
     return round(math.sqrt(summation / (len(lst))), 2)
 
+
 # returns list of valid areas of triangles that can be made by a list of points
 def area_list_maker(points: list[tuple[int, int]]):
     areas = []
     sz = len(points)
     for i in range(sz):
-        for j in range(i+1, sz):
-            for k in range(j+1, sz):
+        for j in range(i + 1, sz):
+            for k in range(j + 1, sz):
                 side_a = calc_distance(points[i], points[j])
                 side_b = calc_distance(points[i], points[k])
                 side_c = calc_distance(points[k], points[j])
