@@ -53,4 +53,4 @@ def standard_deviation_from_list(lst: list):
     summation = 0
     for obj in lst:
         summation += (obj - mean) ** 2
-    return math.sqrt(summation / (len(lst) - 1))
+    return math.sqrt(summation / (len(lst)))
