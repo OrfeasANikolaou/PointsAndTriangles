@@ -16,13 +16,11 @@ def calc_distance(p1: tuple, p2: tuple):
 # user must check if returned value is non-valid
 def area_triangle(side_1: float, side_2: float, side_3: float):
     semiperimeter = (side_1 + side_2 + side_3) / 2
-    return math.sqrt(
-        semiperimeter
-        * (semiperimeter - side_1)
-        * (semiperimeter - side_2)
-        * (semiperimeter - side_3)
-    )
-
+    tmp = (semiperimeter * (semiperimeter - side_1) *  
+           (semiperimeter - side_2) * (semiperimeter - side_3))
+    if tmp > 0.000001:
+        return math.sqrt(tmp)
+    return 0
 
 # returns average from a list
 def avg_from_list(lst: list):
@@ -49,14 +47,10 @@ def get_list_val_range(lst: list, sorted: bool = False):
     return lst[len(lst) - 1] - lst[0]
 
 
-# returns standard deviation, flag true for raw output, false for choosing decimals
-# dec = x for number of decimal places desired, does not affect if flag = False
-def get_standard_deviation(lst: list, flag: bool = False, dec: int = 2):
+# returns standard deviation
+def standard_deviation_from_list(lst: list):
     mean = avg_from_list(lst)
     summation = 0
     for obj in lst:
         summation += (obj - mean) ** 2
-    raw = math.sqrt(summation / (len(lst) - 1))
-    if flag:
-        return raw
-    return float(str(raw)[0 : dec + 2])
+    return math.sqrt(summation / (len(lst) - 1))
