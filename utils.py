@@ -22,16 +22,21 @@ def area_triangle(side_1: float, side_2: float, side_3: float):
         return math.sqrt(tmp)
     return 0
 
-# returns average from a list
+
+# returns average from a list, None if list empty
 def avg_from_list(lst: list):
+    if len(lst) == 0:
+        return None
     sum_ = 0
     for obj in lst:
         sum_ += obj
     return sum_ / len(lst)
 
 
-# returns median from a list (sorts it first if flag false)
+# returns median from a list (sorts it first if flag false), None if list empty
 def median_from_list(lst: list, sorted: bool = False):
+    if len(lst) == 0:
+        return None
     if not sorted:
         lst.sort()
     sz = len(lst)
@@ -40,15 +45,19 @@ def median_from_list(lst: list, sorted: bool = False):
     return (lst[sz // 2] + lst[(sz // 2) + 1]) / 2
 
 
-# returns range between min and max values in a list
+# returns range between min and max values in a list, None if list empty
 def get_list_val_range(lst: list, sorted: bool = False):
+    if len(lst) == 0:
+        return None
     if not sorted:
         lst.sort()
     return lst[len(lst) - 1] - lst[0]
 
 
-# returns standard deviation
+# returns standard deviation, None if list empty
 def standard_deviation_from_list(lst: list):
+    if len(lst) == 0:
+        return None
     mean = avg_from_list(lst)
     summation = 0
     for obj in lst:
