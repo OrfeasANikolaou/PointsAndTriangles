@@ -18,7 +18,7 @@ def area_triangle(side_1: float, side_2: float, side_3: float):
     semiperimeter = (side_1 + side_2 + side_3) / 2
     tmp = (semiperimeter * (semiperimeter - side_1) *  
            (semiperimeter - side_2) * (semiperimeter - side_3))
-    if tmp > 0:
+    if tmp > 0.000001:
         return math.sqrt(tmp)
     return 0
 
