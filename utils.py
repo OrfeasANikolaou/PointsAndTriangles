@@ -30,7 +30,7 @@ def avg_from_list(lst: list):
     sum_ = 0
     for obj in lst:
         sum_ += obj
-    return sum_ / len(lst)
+    return round(sum_ / len(lst), 2)
 
 
 # returns median from a list (sorts it first if flag false), None if list empty
@@ -41,8 +41,8 @@ def median_from_list(lst: list, sorted: bool = False):
         lst.sort()
     sz = len(lst)
     if sz % 2:
-        return lst[sz // 2]
-    return (lst[sz // 2] + lst[(sz // 2) + 1]) / 2
+        return round(lst[sz // 2], 2)
+    return round((lst[sz // 2] + lst[(sz // 2) + 1]) / 2, 2)
 
 
 # returns range between min and max values in a list, None if list empty
@@ -51,7 +51,7 @@ def get_list_val_range(lst: list, sorted: bool = False):
         return None
     if not sorted:
         lst.sort()
-    return lst[len(lst) - 1] - lst[0]
+    return round(lst[len(lst) - 1] - lst[0], 2)
 
 
 # returns standard deviation, None if list empty
@@ -62,4 +62,4 @@ def standard_deviation_from_list(lst: list):
     summation = 0
     for obj in lst:
         summation += (obj - mean) ** 2
-    return math.sqrt(summation / (len(lst)))
+    return round(math.sqrt(summation / (len(lst))), 2)
