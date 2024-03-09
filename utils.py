@@ -8,7 +8,7 @@ def rnd_point(start: int = -100, end: int = 100):
 
 
 # calcualtes distance between two points in a cartesian map
-def calc_distance(p1: tuple, p2: tuple):
+def calc_distance(p1: tuple[int, int], p2: tuple[int, int]):
     return math.sqrt(((p1[0] - p2[0]) ** 2) + ((p1[1] - p2[1]) ** 2))
 
 
@@ -63,3 +63,18 @@ def standard_deviation_from_list(lst: list):
     for obj in lst:
         summation += (obj - mean) ** 2
     return round(math.sqrt(summation / (len(lst))), 2)
+
+# returns list of valid areas of triangles that can be made by a list of points
+def area_list_maker(points: list[tuple[int, int]]):
+    areas = []
+    sz = len(points)
+    for i in range(sz):
+        for j in range(i+1, sz):
+            for k in range(j+1, sz):
+                side_a = calc_distance(points[i], points[j])
+                side_b = calc_distance(points[i], points[k])
+                side_c = calc_distance(points[k], points[j])
+                tmp = area_triangle(side_a, side_b, side_c)
+                if tmp != 0:
+                    areas.append(tmp)
+    return areas
