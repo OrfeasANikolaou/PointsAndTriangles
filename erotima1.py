@@ -1,27 +1,14 @@
 import statistics
 import utils
 
-# from itertools import combinations as comb
-
 
 n_pts = 100
 points = []
-areas = []
 for i in range(n_pts):
     points.append(utils.rnd_point())
 
-#  for point in comb(points, 3):
-#      print(point)
+areas = utils.area_list_maker(points)
 
-for i in range(n_pts):
-    for j in range(i + 1, n_pts):
-        for k in range(j + 1, n_pts):
-            side_a = utils.calc_distance(points[i], points[j])
-            side_b = utils.calc_distance(points[j], points[k])
-            side_c = utils.calc_distance(points[k], points[i])
-            tmp = utils.area_triangle(side_a, side_b, side_c)
-            if tmp != 0:
-                areas.append(tmp)
 print("---------------------------------------------")
 print(f"Valid triangles: {len(areas)}")
 print("---------------------------------------------")
